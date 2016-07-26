@@ -105,7 +105,7 @@ angular.module('cardkitApp')
               text: 'Credit: Insert name here',
               controlsOrder: 2,
               fill: function() {
-                return $scope.theme.quote;
+                return $scope.theme.credit;
               },
               fontSize: function() {
                 return ($scope.size.name === 'Twitter') ? 22 : 16;
@@ -256,7 +256,7 @@ angular.module('cardkitApp')
               text: 'Ogden Nash',
               controlsOrder: 2,
               fill: function() {
-                return $scope.theme.quote;
+                return $scope.theme.credit;
               },
               fontSize: function() {
                 return ($scope.size.name === 'Twitter') ? 22 : 16;
@@ -434,7 +434,7 @@ angular.module('cardkitApp')
               text: 'Janan Ganesh on why\nLabour is Terrible',
               controlsOrder: 3,
               fill: function() {
-                return $scope.theme.quote;
+                return $scope.theme.credit;
               },
               fontSize: function() {
                 return ($scope.size.name === 'Twitter') ? 22 : 16;
@@ -1481,7 +1481,7 @@ angular.module('cardkitApp')
               text: 'Name here in caps',
               controlsOrder: 3,
               fill: function() {
-                return $scope.theme.quote;
+                return $scope.theme.credit;
               },
               fontSize: function() {
                 return ($scope.size.name === 'Twitter') ? 22 : 18;
@@ -1512,7 +1512,7 @@ angular.module('cardkitApp')
               text: 'Read more about the case on ft.com/xxxxx',
               controlsOrder: 4,
               fill: function() {
-                return $scope.theme.highlightColor;
+                return $scope.theme.xref;
               },
               fontSize: function() {
                 return ($scope.size.name === 'Twitter') ? 18 : 14;
@@ -1677,7 +1677,7 @@ angular.module('cardkitApp')
               text: 'Janan Ganesh on why\nLabour is Terrible',
               controlsOrder: 3,
               fill: function() {
-                return $scope.theme.quote;
+                return $scope.theme.credit;
               },
               fontSize: function() {
                 return ($scope.size.name === 'Twitter') ? 22 : 16;
