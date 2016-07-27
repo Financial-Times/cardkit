@@ -314,7 +314,7 @@ angular.module('cardkitApp')
               },
             }];
           }
-        },{
+        }, {
           name: 'Quote With Headshot',
           elements: function($scope) {
             return [{
@@ -346,7 +346,6 @@ angular.module('cardkitApp')
               src: function() {
                 return $scope.theme.images.headshotSrc || '';
               },
-              opacity: 1,
               x: function() {
                 return $scope.size.gridSize * 20;
               },
@@ -360,7 +359,8 @@ angular.module('cardkitApp')
                 src: true,
                 width: true,
                 filters: [
-                  'Grayscale'
+                  'Grayscale',
+                  'Transparent Grayscale'
                 ],
               }
             }, {
@@ -469,6 +469,147 @@ angular.module('cardkitApp')
               controlsOrder: 1,
               fontSize: function() {
                 return ($scope.size.name === 'Twitter') ? 32 : 26;
+              },
+              fontFamily: function() {
+                return $scope.theme.headlineFont;
+              },
+              textAnchor: 'start',
+              x: function() {
+                return $scope.size.gridSize;
+              },
+              y: function() {
+                return $scope.size.gridSize * 3;
+              },
+              fontWeight: 600,
+              draggable: true,
+              editable: {
+                text: true,
+                fontSize: {
+                  'Small (26px)': 26,
+                  'Standard (32px)': 32,
+                  'Large (40px)': 40,
+                  'X-Large (50px)': 50,
+                },
+                fontStyle :{
+                  'standard': 'normal',
+                  'italic': 'italic',
+                },
+              },
+            }];
+          }
+        }, {
+          name: 'Quote With Headshot (Twitter)',
+          elements: function($scope) {
+            return [{
+              name: 'Background Colour',
+              type: 'rect',
+              controlsOrder: 7,
+              height: function() {
+                return $scope.size.height;
+              },
+              width: function() {
+                return $scope.size.width;
+              },
+              fill: function() {
+                return $scope.theme.background;
+              }
+            }, {
+              name: 'Image',
+              type: 'image',
+              width: function() {
+                return $scope.size.gridSize * 20;
+              },
+              controlsOrder: 2,
+              height: function() {
+                if (typeof this.width === 'function') {
+                  return this.width();
+                }
+                return this.width;
+              },
+              src: function() {
+                return $scope.theme.images.headshotSrc || '';
+              },
+              x: function() {
+                return $scope.size.gridSize * 20;
+              },
+              y: function() {
+                return $scope.size.gridSize;
+              },
+              preserveAspectRatio: 'xMinYMin meet',
+              draggable: true,
+              defaultFilter: '',
+              editable: {
+                src: true,
+                width: true,
+                filters: [
+                  'Grayscale',
+                  'Transparent Grayscale'
+                ],
+              }
+            }, {
+              name: 'Logo',
+              type: 'image',
+              controlsOrder: 6,
+              width: function() {
+                return $scope.size.gridSize * 2;
+              },
+              height: function() {
+                return $scope.size.gridSize * 2;
+              },
+              src: function() {
+                return $scope.theme.images.logoSrc;
+              },
+              defaultFilter: 'Grayscale',
+              opacity: 0.2,
+              x: function() {
+                return $scope.size.width - ($scope.size.gridSize * 3);
+              },
+              y: function() {
+                return $scope.size.gridSize;
+              },
+              preserveAspectRatio: 'xMinYMin meet',
+              draggable: false
+            }, {
+              name: 'Credit',
+              type: 'text',
+              text: 'Janan Ganesh on why\nLabour is Terrible',
+              controlsOrder: 3,
+              fill: function() {
+                return $scope.theme.credit;
+              },
+              fontSize: function() {
+                return ($scope.size.name === 'Twitter') ? 22 : 16;
+              },
+              fontFamily: function() {
+                return $scope.theme.creditFont;
+              },
+              textAnchor: 'start',
+              textTransform: 'uppercase',
+              x: function() {
+                return $scope.size.gridSize;
+              },
+              y: function() {
+                return $scope.size.height - $scope.size.gridSize * 6;
+              },
+              fontWeight: 500,
+              draggable: true,
+              editable: {
+                text: true,
+                fontSize: {
+                  'Small (16px)': 16,
+                  'Large (22px)': 22,
+                }
+              },
+            }, {
+              name: 'Headline',
+              type: 'text',
+              text: 'Friendship is constant\nin all other things save in\nthe office and affairs of\nlove: Therefore, all hearts\nin love use their own',
+              fill: function() {
+                return '#fff';
+              },
+              controlsOrder: 1,
+              fontSize: function() {
+                return ($scope.size.name === 'Twitter') ? 36 : 26;
               },
               fontFamily: function() {
                 return $scope.theme.headlineFont;
@@ -676,7 +817,6 @@ angular.module('cardkitApp')
               src: function() {
                 return $scope.theme.images.illustrationSrc;
               },
-              opacity: 1,
               x: 0,
               y: function() {
                 return $scope.size.gridSize*2;
@@ -834,7 +974,6 @@ angular.module('cardkitApp')
               src: function() {
                 return $scope.theme.images.graphSrc;
               },
-              opacity: 1,
               x: function() {
 
                 var areaW = $scope.size.width * 0.7;
@@ -1000,7 +1139,6 @@ angular.module('cardkitApp')
               src: function() {
                 return $scope.theme.images.graphWideSrc;
               },
-              opacity: 1,
               x: function() {
                 return $scope.size.gridSize;
               },
@@ -1156,7 +1294,6 @@ angular.module('cardkitApp')
               src: function() {
                 return $scope.theme.images.promoSrc;
               },
-              opacity: 1,
               x: '0%',
               y: '0%',
               preserveAspectRatio: 'xMinYMin meet',
@@ -1278,7 +1415,6 @@ angular.module('cardkitApp')
               src: function() {
                 return $scope.theme.images.promoSrc;
               },
-              opacity: 1,
               x: '0%',
               y: '0%',
               preserveAspectRatio: 'xMinYMin meet',
@@ -1434,7 +1570,6 @@ angular.module('cardkitApp')
               src: function() {
                 return $scope.theme.images.bookmark;
               },
-              opacity: 1,
               x: function() {
                 return $scope.size.width - (this.width() + $scope.size.gridSize);
               },
@@ -1603,7 +1738,6 @@ angular.module('cardkitApp')
               src: function() {
                 return $scope.theme.images.headshotSrc || '';
               },
-              opacity: 1,
               x: function() {
                 var w;
                 if (typeof this.width === 'function') {
@@ -1769,7 +1903,6 @@ angular.module('cardkitApp')
                 return h;
               },
               src: '',
-              opacity: 1,
               x: '0%',
               y: '0%',
               preserveAspectRatio: 'xMinYMin meet',
@@ -1914,7 +2047,6 @@ angular.module('cardkitApp')
                 return h;
               },
               src: '',
-              opacity: 1,
               x: '0%',
               y: '0%',
               preserveAspectRatio: 'xMinYMin meet',

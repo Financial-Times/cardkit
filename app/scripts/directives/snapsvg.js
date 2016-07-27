@@ -140,31 +140,41 @@ angular.module('cardkitApp')
         init();
 
         // Create us some filters for later use
-
         function setupFilters() {
           // Store filters
           filters = {
-            'Sepia': s.paper.filter(snapSVG.filter.sepia(1)).attr({
-              width: canvasData.width*4 + 'px',
-              height: canvasData.height*4 + 'px'
-            }),
-            'Grayscale': s.paper.filter(snapSVG.filter.grayscale(1)).attr({
-              width: canvasData.width*4 + 'px',
-              height: canvasData.height*4 + 'px'
-            }),
-            'Saturate': s.paper.filter(snapSVG.filter.saturate(0.5)).attr({
-              width: canvasData.width*4 + 'px',
-              height: canvasData.height*4 + 'px'
-            }),
-            'Invert': s.paper.filter(snapSVG.filter.invert(1)).attr({
-              width: canvasData.width*4 + 'px',
-              height: canvasData.height*4 + 'px'
-            }),
-            'Blur': s.paper.filter(snapSVG.filter.blur(4, 4)).attr({
-              width: canvasData.width*4 + 'px',
-              height: canvasData.height*4 + 'px'
-            }),
+            'Sepia': {
+              filter: s.paper.filter(snapSVG.filter.sepia(1)),
+              opacity: 1
+            },
+            'Grayscale': {
+              filter: s.paper.filter(snapSVG.filter.grayscale(1)),
+              opacity: 1
+            },
+            'Transparent Grayscale': {
+              filter: s.paper.filter(snapSVG.filter.grayscale(1)),
+              opacity: 0.18
+            },
+            'Saturate': {
+              filter: s.paper.filter(snapSVG.filter.saturate(0.5)),
+              opacity: 1
+            },
+            'Invert': {
+              filter: s.paper.filter(snapSVG.filter.invert(1)),
+              opacity: 1
+            },
+            'Blur': {
+              filter: s.paper.filter(snapSVG.filter.blur(4, 4)),
+              opacity: 1
+            }
           };
+
+          Object.keys(filters).forEach(filter => {
+            filters[filter].filter = filters[filter].filter.attr({
+              width: canvasData.width*4 + 'px',
+              height: canvasData.height*4 + 'px'
+            });
+          });
         }
 
         setupFilters();
@@ -206,20 +216,14 @@ angular.module('cardkitApp')
       		}
 
           /** Filters **/
-          if(typeof element.defaultFilter !== 'undefined') {
-            if(element.defaultFilter !== '') {
-              el.attr({
-                filter: filters[element.defaultFilter]
-              });
-            } else {
-              el.attr({
-                filter: ''
-              });
-            }
+          if(element.defaultFilter && element.defaultFilter !== '') {
+            el.attr({
+              filter: filters[element.defaultFilter].filter,
+              opacity: filters[element.defaultFilter].opacity
+            });
         	}
 
           return el;
-
         }
 
         // use smart quotes
