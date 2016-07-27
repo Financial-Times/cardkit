@@ -169,7 +169,7 @@ angular.module('cardkitApp')
             }
           };
 
-          Object.keys(filters).forEach(filter => {
+          Object.keys(filters).forEach(function(filter){
             filters[filter].filter = filters[filter].filter.attr({
               width: canvasData.width*4 + 'px',
               height: canvasData.height*4 + 'px'
