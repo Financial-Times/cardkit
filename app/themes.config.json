@@ -156,7 +156,7 @@
     "images": {
       "logoSrc": "nikkeiAsianReviewLogoRectSrc",
       "logoWideSrc": "nikkeiAsianReviewLogoWideSrc",
-      "logoAltSrc": "logoAltSrc",
+      "logoAltSrc": "nikkeiAsianReviewLogoRectSrc",
       "headshotSrc": "headshotSrc",
       "bookmark": "bookmark",
       "graphSrc": "graphSrc",
