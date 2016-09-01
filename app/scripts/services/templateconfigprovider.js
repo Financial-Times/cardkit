@@ -391,7 +391,7 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize * 3;
               },
               width: function() {
-                return $scope.size.width;
+                return templateHelper.crossReferenceBackground.width($scope);
               },
               y: function() {
                 return $scope.size.height - this.height();
@@ -404,21 +404,20 @@ angular.module('cardkitApp')
               type: 'image',
               controlsOrder: 6,
               width: function() {
-                return $scope.size.gridSize * 2;
+                return templateHelper.logo.width($scope);
               },
               height: function() {
-                return $scope.size.gridSize * 2;
+                return templateHelper.logo.height($scope);
               },
               src: function() {
                 return $scope.theme.images.logoSrc;
               },
               opacity: 1,
               x: function() {
-                return $scope.size.width - ($scope.size.gridSize * 3);
+                return templateHelper.logo.x($scope);
               },
               y: function() {
-                var h = ($scope.size.gridSize) / 2;
-                return $scope.size.height - (this.height() + h);
+                return templateHelper.logo.y($scope);
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: false
