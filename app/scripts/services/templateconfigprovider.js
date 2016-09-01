@@ -751,7 +751,7 @@ angular.module('cardkitApp')
             }, {
               name: 'Ref Text',
               type: 'text',
-              text: '123.com/abc',
+              text: 'FT.COM/COMPANIES',
               controlsOrder: 3,
               fill: function() {
                 return  $scope.theme.xref;
@@ -893,30 +893,29 @@ angular.module('cardkitApp')
             }, {
               name: 'Logo',
               type: 'image',
-              controlsOrder: 10,
+              controlsOrder: 6,
               width: function() {
-                return $scope.size.gridSize * 2;
+                return $scope.size.gridSize * ($scope.theme.isNikkei? 12 : 2);
               },
               height: function() {
-                return $scope.size.gridSize * 2;
+                return templateHelper.logo.height($scope);
               },
               src: function() {
-                return $scope.theme.images.logoSrc;
+                return $scope.theme.isNikkei ? $scope.theme.images.logoWideSrc : $scope.theme.images.logoSrc;
               },
               opacity: 1,
               x: function() {
-                return $scope.size.width - ($scope.size.gridSize * 3);
+                return $scope.size.width - ($scope.theme.isNikkei ? this.width($scope) : $scope.size.gridSize * 4);
               },
               y: function() {
-                var h = ($scope.size.gridSize);
-                return $scope.size.height - (this.height() + h);
+                return templateHelper.logo.y($scope);
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: false
             }, {
               name: 'Reference Text',
               type: 'text',
-              text: 'FT.COM/\nCOMPANIES',
+              text: 'FT.COM/COMPANIES',
               controlsOrder: 3,
               fill: function() {
                 return $scope.theme.xref;
@@ -933,7 +932,7 @@ angular.module('cardkitApp')
                 return (w - w*0.3) + $scope.size.gridSize;
               },
               y: function() {
-                return $scope.size.height - ($scope.size.gridSize*2 + 2);
+                return $scope.size.height - ($scope.size.gridSize * ($scope.theme.isNikkei ? 4 : 2) + 2);
               },
               fontWeight: 500,
               draggable: false,
