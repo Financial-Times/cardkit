@@ -40,7 +40,7 @@
     "node": "^8.9.4"
   },
   "scripts": {
-    "test": "grunt test --force",
+    "test": "grunt test",
     "deploy": "grunt deploy",
     "build": "grunt build",
     "start": "grunt serve",
