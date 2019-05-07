@@ -1,7 +1,9 @@
 {
   "name": "cardkit",
   "version": "2.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "snyk": "^1.161.1"
+  },
   "devDependencies": {
     "@financial-times/secret-squirrel": "^2.5.16",
     "grunt": "^1.0.1",
@@ -45,6 +47,7 @@
     "build": "grunt build",
     "start": "grunt serve",
     "precommit": "node_modules/.bin/secret-squirrel",
-    "commitmsg": "node_modules/.bin/secret-squirrel-commitmsg"
+    "commitmsg": "node_modules/.bin/secret-squirrel-commitmsg",
+    "prepare": "snyk protect"
   }
 }
